@@ -32,5 +32,5 @@
     </mat-select>
   </mat-form-field>
   <p style="color: red" *ngIf="!homeform.get('sesso')?.valid && homeform.get('sesso')?.touched">Seleziona un sesso</p>
-  <button mat-flat-button color="primary" type="submit" [disabled]="!homeform.valid">Primary</button>
+  <button mat-flat-button color="primary" type="submit" [disabled]="!homeform.valid" (click)="onSubmit()">Primary</button>
 </form>

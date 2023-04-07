@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FirebaseService } from '../servizi/firebase.service';
 
 @Component({
   selector: 'app-reactiveform',
@@ -9,7 +10,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ReactiveformComponent implements OnInit{
 
   homeform: FormGroup
+  cognome: any;
 
+  constructor(private firebase: FirebaseService){}
 
   ngOnInit(): void {
     this.homeform = new FormGroup({
@@ -21,7 +24,18 @@ export class ReactiveformComponent implements OnInit{
     })
   }
 
-  onSubmit() :void {
-
+  onSubmit()  {
+    this.firebase.insert(
+      'https://corso-angular-203c5-default-rtdb.europe-west1.firebasedatabase.app/persone.json',
+      {
+       nome: this.homeform.value.nome ,
+       cognome: this.homeform.value.cognome,
+       dataNascita: this.homeform.value.dataNascita,
+       codiceFiscale: this.homeform.value.codiceFiscale,
+       sesso: this.homeform.value.sesso
+      }
+    ).subscribe(data =>{
+      console.log(data)
+    });
   }
 }

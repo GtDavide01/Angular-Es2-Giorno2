@@ -1,31 +1,31 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { TableDialogComponentComponent } from './table-dialog-component/table-dialog-component.component';
+import { FirebaseService } from './servizi/firebase.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit{
-
-  constructor(public dialog: MatDialog) {}
+export class AppComponent implements OnInit {
+  constructor(public dialog: MatDialog, private firebase: FirebaseService) {}
 
   tableData = [
-    {id: 1 , nome: 'Mario' , cognome:'Rossi'},
-    {id: 2 , nome: 'Luigi' , cognome:'Neri'},
-    {id: 3 , nome: 'Maria' , cognome:'Bianchi'},
-    {id: 4 , nome: 'Luca' , cognome:'Gialli'},
-    {id: 5 , nome: 'Franco' , cognome:'Verdi'},
-    {id: 6 , nome: 'Giuseppe' , cognome:'Violi'},
-    {id: 7 , nome: 'Lorenzo' , cognome:'Rosi'},
-    {id: 8 , nome: 'Francesco' , cognome:'Azzurri'},
-  ]
-  openDialog() : void {
-    const dialogRef = this.dialog.open(TableDialogComponentComponent , {
+    { id: 1, nome: 'Mario', cognome: 'Rossi' },
+    { id: 2, nome: 'Luigi', cognome: 'Neri' },
+    { id: 3, nome: 'Maria', cognome: 'Bianchi' },
+    { id: 4, nome: 'Luca', cognome: 'Gialli' },
+    { id: 5, nome: 'Franco', cognome: 'Verdi' },
+    { id: 6, nome: 'Giuseppe', cognome: 'Violi' },
+    { id: 7, nome: 'Lorenzo', cognome: 'Rosi' },
+    { id: 8, nome: 'Francesco', cognome: 'Azzurri' },
+  ];
+  openDialog(): void {
+    const dialogRef = this.dialog.open(TableDialogComponentComponent, {
       width: '600px',
-      data: this.tableData
+      data: this.tableData,
     });
     // this.dialog.open(DialogElementsExampleDialog , {
     //   data: this.tableData
@@ -65,16 +65,13 @@ export class AppComponent implements OnInit{
   //   const ore = minuti / 60 ;
   //   console.log(`Età in ore : ${ore.toFixed(2)}`)
 
+  getTwo(primo: Array<object>, secondo: Array<string>): any {}
 
   // }
   ngOnInit(): void {
-  //  console.log(this.getEta(this.persona));
+
   }
-  onClick(): void{
-    console.log('ciaooo')
+  onClick(): void {
+    console.log('ciaooo');
   }
 }
-
-
-
-
